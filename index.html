@@ -9,217 +9,183 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #f9f6f1; font-family: 'Lato', sans-serif; color: #2c2418; }
 
-    body {
+    .section {
       min-height: 100vh;
-      background: #f9f6f1;
-      display: flex;
-      align-items: center;
+      /* height: 100vh;
+      overflow: hidden; */
+      display: flex; 
+      align-items: center; 
       justify-content: center;
-      padding: 2rem 1rem;
-      font-family: 'Lato', sans-serif;
+      padding: 3rem 1.2rem;
     }
+    .section-alt { background: #fff; }
 
-    .invite-wrap {
-      width: 100%;
+    .card {
+
+      max-height: 80vh;
+      overflow-y: auto;
+      width: 100%; 
       max-width: 440px;
-    }
+      min-height: 520px;   
 
-    .invite-card {
-      background: #ffffff;
+      background: #ffffff; 
       border: 1px solid #e8e0d4;
-      border-radius: 12px;
+      border-radius: 12px; 
       padding: 3rem 2.5rem;
-      text-align: center;
+      text-align: center; 
       position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; 
+
     }
+    .section-alt .card { background: #f9f6f1; }
 
     .corner-tl, .corner-tr, .corner-bl, .corner-br {
-      position: absolute;
-      width: 36px;
-      height: 36px;
-      opacity: 0.4;
+      position: absolute; width: 36px; height: 36px; opacity: 0.35;
     }
-    .corner-tl { top: 14px; left: 14px; border-top: 1px solid #8B6F47; border-left: 1px solid #8B6F47; border-radius: 4px 0 0 0; }
-    .corner-tr { top: 14px; right: 14px; border-top: 1px solid #8B6F47; border-right: 1px solid #8B6F47; border-radius: 0 4px 0 0; }
-    .corner-bl { bottom: 14px; left: 14px; border-bottom: 1px solid #8B6F47; border-left: 1px solid #8B6F47; border-radius: 0 0 0 4px; }
-    .corner-br { bottom: 14px; right: 14px; border-bottom: 1px solid #8B6F47; border-right: 1px solid #8B6F47; border-radius: 0 0 4px 0; }
+    .corner-tl { top:14px; left:14px;   border-top:1px solid #8B6F47; border-left:1px solid #8B6F47;   border-radius:4px 0 0 0; }
+    .corner-tr { top:14px; right:14px;  border-top:1px solid #8B6F47; border-right:1px solid #8B6F47;  border-radius:0 4px 0 0; }
+    .corner-bl { bottom:14px; left:14px;  border-bottom:1px solid #8B6F47; border-left:1px solid #8B6F47;  border-radius:0 0 0 4px; }
+    .corner-br { bottom:14px; right:14px; border-bottom:1px solid #8B6F47; border-right:1px solid #8B6F47; border-radius:0 0 4px 0; }
 
     .eyebrow {
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #9a8a78;
-      margin-bottom: 1.4rem;
+      font-size: 11px; font-weight: 300; letter-spacing: 0.22em;
+      text-transform: uppercase; color: #9a8a78; margin-bottom: 1.4rem;
     }
-
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300; font-style: italic;
+      color: #8B6F47; margin-bottom: 1.6rem;
+    }
     .names {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 44px;
-      font-weight: 300;
-      font-style: italic;
-      color: #2c2418;
-      line-height: 1.15;
+      font-size: 44px; font-weight: 300; font-style: italic;
+      color: #2c2418; line-height: 1.15;
     }
-
     .ampersand {
-      font-size: 34px;
-      color: #8B6F47;
-      opacity: 0.7;
-      display: block;
-      line-height: 1.1;
-      margin: 0.1rem 0;
+      font-size: 34px; color: #8B6F47; opacity: 0.7;
+      display: block; line-height: 1.1; margin: 0.1rem 0;
     }
 
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 1.4rem 0;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #d4c4b0;
-    }
-    .divider span {
-      font-size: 13px;
-      color: #8B6F47;
-      opacity: 0.6;
-    }
+    .divider { display: flex; align-items: center; gap: 10px; margin: 1.4rem 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #d4c4b0; }
+    .divider span { font-size: 13px; color: #8B6F47; opacity: 0.6; }
 
     .detail-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 8px;
-      margin: 10px 0;
-      font-size: 14px;
-      color: #6b5d4f;
-      font-weight: 300;
+      display: flex; align-items: flex-start; justify-content: center;
+      gap: 8px; margin: 10px 0; font-size: 14px; color: #6b5d4f; font-weight: 300;
     }
-
-    .detail-row svg {
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: #8B6F47;
-    }
-
-    .detail-label {
-      color: #2c2418;
-      font-weight: 400;
-    }
+    .detail-row svg { flex-shrink: 0; margin-top: 1px; color: #8B6F47; }
+    .detail-label { color: #2c2418; font-weight: 400; }
 
     .countdown-heading {
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9a8a78;
-      margin-bottom: 0.8rem;
+      font-size: 11px; font-weight: 300; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #9a8a78; margin-bottom: 0.8rem;
     }
-
-    .countdown-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 6px;
-    }
-
-    .countdown-box {
-      text-align: center;
-      min-width: 56px;
-    }
-
+    .countdown-wrap { display: flex; justify-content: center; align-items: flex-start; gap: 6px; }
+    .countdown-box { text-align: center; min-width: 56px; }
     .countdown-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
-      font-weight: 300;
-      color: #2c2418;
-      display: block;
-      line-height: 1;
+      font-size: 36px; font-weight: 300; color: #2c2418; display: block; line-height: 1;
     }
-
     .countdown-label {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #9a8a78;
-      margin-top: 5px;
-      display: block;
+      font-size: 10px; font-weight: 300; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #9a8a78; margin-top: 5px; display: block;
     }
-
     .countdown-sep {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      color: #8B6F47;
-      opacity: 0.4;
-      padding-top: 3px;
+      font-size: 28px; color: #8B6F47; opacity: 0.4; padding-top: 3px;
     }
 
-    .btn-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 1.8rem;
-    }
-
+    .btn-row { display: flex; gap: 10px; margin-top: 1.8rem; }
     .btn {
-      flex: 1;
-      padding: 11px 0;
-      border-radius: 8px;
-      font-size: 13px;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      transition: opacity 0.15s;
+      flex: 1; padding: 11px 0; border-radius: 8px;
+      font-size: 13px; font-family: 'Lato', sans-serif; font-weight: 400;
+      letter-spacing: 0.08em; cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+      gap: 7px; transition: opacity 0.15s;
     }
+    .btn-outline { background: transparent; color: #8B6F47; border: 1px solid #8B6F47; }
+    .btn-fill    { background: #8B6F47; color: #ffffff; border: none; }
+    .btn:hover   { opacity: 0.75; }
+    .btn-full    { flex: unset; width: 100%; margin-top: 1.8rem; padding: 13px 0; font-size: 14px; }
 
-    .btn-outline {
-      background: transparent;
-      color: #8B6F47;
-      border: 1px solid #8B6F47;
+    /* .map-embed {
+      width: 100%; height: 240px; border: 0;
+      border-radius: 8px; margin: 1.2rem 0 0.5rem; display: block;
+    } */
+
+    .timeline { text-align: left; margin-top: 0.5rem; }
+    .timeline-item {
+      display: flex; gap: 16px; padding: 14px 0;
+      border-bottom: 1px solid #ede5d8;
     }
-
-    .btn-fill {
-      background: #8B6F47;
-      color: #ffffff;
-      border: none;
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 300; color: #8B6F47;
+      min-width: 70px; padding-top: 1px;
     }
+    .timeline-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #8B6F47; opacity: 0.5; flex-shrink: 0; margin-top: 6px;
+    }
+    .timeline-event { font-size: 14px; font-weight: 400; color: #2c2418; }
 
-    .btn:hover { opacity: 0.75; }
+    .nav-dots {
+      position: fixed; right: 14px; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 8px; z-index: 100;
+    }
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #8B6F47; opacity: 0.25; cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s; border: none; padding: 0;
+    }
+    .nav-dot.active { opacity: 0.8; transform: scale(1.3); }
 
     .footer-note {
-      margin-top: 1.6rem;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: #b0a090;
+      margin-top: 1.6rem; font-size: 11px; font-weight: 300;
+      letter-spacing: 0.1em; color: #b0a090;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      opacity: 0.4; animation: bounce 2s infinite;
+    }
+    .scroll-hint span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B6F47; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
     }
 
     @media (max-width: 480px) {
-      .invite-card { padding: 2.5rem 1.5rem; }
+      .card { padding: 2.5rem 1.5rem; }
       .names { font-size: 36px; }
       .countdown-num { font-size: 28px; }
       .countdown-box { min-width: 44px; }
+      .nav-dots { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="invite-wrap">
-    <div class="invite-card">
-      <div class="corner-tl"></div>
-      <div class="corner-tr"></div>
-      <div class="corner-bl"></div>
-      <div class="corner-br"></div>
+
+  <!-- NAV DOTS -->
+  <nav class="nav-dots">
+    <button class="nav-dot active" onclick="goTo(0)"></button>
+    <button class="nav-dot" onclick="goTo(1)"></button>
+    <button class="nav-dot" onclick="goTo(2)"></button>
+  </nav>
+
+  <!-- PAGE 1 — INVITATION + COUNTDOWN -->
+  <section class="section" id="sec-0">
+    <div class="card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
 
       <p class="eyebrow">Menjemput ke majlis yang diberkati</p>
 
@@ -231,7 +197,7 @@
 
       <div class="divider"><span>✦</span></div>
 
-      <div style="margin-bottom: 1rem;">
+      <div style="margin-bottom:1rem;">
         <div class="detail-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <span class="detail-label">Ahad, 1 November 2026</span>
@@ -242,7 +208,7 @@
         </div>
         <div class="detail-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Lembah Pantai Community Hall</span>
+          <span>Lembah Pantai Community Centre</span>
         </div>
       </div>
 
@@ -271,6 +237,74 @@
         </div>
       </div>
 
+      <p class="footer-note">Kehadiran anda amat kami hargai &nbsp;·&nbsp; Dress code: Smart casual</p>
+    </div>
+
+    <div class="scroll-hint">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B6F47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      <span>Aturca Majlis</span>
+    </div>
+  </section>
+
+  <!-- PAGE 2 — ATURCARA -->
+  <section class="section section-alt" id="sec-1">
+    <div class="card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+
+      <p class="section-title">Aturcara Majlis</p>
+      <div style="font-size:13px; color:#9a8a78; margin-top:-1rem; margin-bottom:1.2rem;">Ahad, 1 November 2026</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">11.00 am</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-event">Ketibaan Tetamu</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">12.00 pm</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-event">Ketibaan Pengantin</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">12.30 pm</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-event">Makan Beradab</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">4.00 pm</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-event">Majlis Berakhir</div>
+        </div>
+      </div>
+
+      <p class="footer-note">Aturcara tertakluk kepada perubahan</p>
+    </div>
+
+
+  </section>
+
+  <!-- PAGE 3 — RSVP + LOCATION -->
+  <section class="section" id="sec-2">
+    <div class="card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+
+      <p class="section-title">Lokasi &amp; RSVP</p>
+
+      <div class="detail-row" style="justify-content:center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="detail-label">Lembah Pantai Community Centre</span>
+      </div>
+
+      <!-- <iframe
+        class="map-embed"
+        src="https://maps.google.com/maps?q=Lembah+Pantai+Community+Centre+Kuala+Lumpur&output=embed"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Lokasi Majlis">
+      </iframe> -->
+
       <div class="btn-row">
         <a class="btn btn-outline" href="https://maps.app.goo.gl/wx2eG25VmbfR9URB8" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -282,37 +316,50 @@
         </a>
       </div>
 
-      <p class="footer-note">Kehadiran anda amat kami hargai &nbsp;·&nbsp; Dress code: Smart casual</p>
+      <div class="divider"><span>✦</span></div>
+
+      <p class="footer-note">
+        Dengan penuh kesyukuran —<br>
+        <em style="font-family:'Cormorant Garamond',serif; font-size:15px; color:#8B6F47;">Afif &amp; Athirah</em>
+      </p>
     </div>
-  </div>
+  </section>
 
   <script>
+    // COUNTDOWN
     function tick() {
       var target = new Date('2026-11-01T11:00:00');
       var now = new Date();
       var diff = target - now;
-
       if (diff <= 0) {
-        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-days').textContent  = '0';
         document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
+        document.getElementById('cd-mins').textContent  = '00';
+        document.getElementById('cd-secs').textContent  = '00';
         return;
       }
-
-      var days = Math.floor(diff / 86400000);
-      var hours = Math.floor((diff % 86400000) / 3600000);
-      var mins = Math.floor((diff % 3600000) / 60000);
-      var secs = Math.floor((diff % 60000) / 1000);
-
-      document.getElementById('cd-days').textContent = days;
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
     }
-
     tick();
     setInterval(tick, 1000);
+
+    // NAV DOTS
+    var sections = ['sec-0','sec-1','sec-2'];
+    var dots = document.querySelectorAll('.nav-dot');
+    function goTo(i) { document.getElementById(sections[i]).scrollIntoView({ behavior:'smooth' }); }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var idx = sections.indexOf(e.target.id);
+          dots.forEach(function(d) { d.classList.remove('active'); });
+          if (idx > -1) dots[idx].classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(function(id) { observer.observe(document.getElementById(id)); });
   </script>
 </body>
 </html>
