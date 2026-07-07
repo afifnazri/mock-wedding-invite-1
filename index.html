@@ -16,7 +16,7 @@
     body { background: #f9f6f1; font-family: 'Lato', sans-serif; color: #2c2418; }
 
     .section {
-      min-height: 100vh;
+      min-height: 101vh;
       /* height: 100vh;
       overflow: hidden; */
       display: flex; 
@@ -158,17 +158,17 @@
 
     .scroll-hint {
       position: absolute; 
-	  bottom: 1.5rem; 
-	  left: 50%; 
-	  transform: translateX(-50%);
+      bottom: 1.5rem; 
+      left: 50%; 
+      transform: translateX(-50%);
       display: flex; 
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 4px;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
       opacity: 0.4; 
-	  animation: bounce 2s infinite;
-	  
+      animation: bounce 2s infinite;
     }
+
     .scroll-hint span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B6F47; }
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -183,43 +183,49 @@
       .nav-dots { display: none; }
     }
 	
-	#rsvp-form input,
-	#rsvp-form select {
+    #rsvp-form input,
+    #rsvp-form select {
+      width:100%;
+      padding:12px;
+      margin:8px 0;
+      border:1px solid #d4c4b0;
+      border-radius:8px;
+      font-family:'Lato',sans-serif;
+    }
 
-	  width:100%;
-	  padding:12px;
-	  margin:8px 0;
+    #rsvp-form button {
+      width:100%;
+      margin-top:10px;
 
-	  border:1px solid #d4c4b0;
-	  border-radius:8px;
-
-	  font-family:'Lato',sans-serif;
-	}
-
-
-	#rsvp-form button {
-
-	  width:100%;
-	  margin-top:10px;
-
-	}
+    }
 	
-  .couples-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 34px;
-      font-weight: 400;
-      font-style: normal;
-      color: #2c2418;
-      line-height: 1.3;
+    .couples-names {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 34px;
+        font-weight: 400;
+        font-style: normal;
+        color: #2c2418;
+        line-height: 1.3;
+    }
+
+    .middle-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
   }
 
-  .middle-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
 
+  .reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 	
   </style>
 </head>
@@ -238,7 +244,7 @@
 
   <!-- PAGE 1 — INVITATION + COUNTDOWN -->
   <section class="section" id="sec-0">
-    <div class="card">
+    <div class="card reveal">
       <div class="corner-tl"></div><div class="corner-tr"></div>
       <div class="corner-bl"></div><div class="corner-br"></div>
 
@@ -246,56 +252,31 @@
 
       <div class="middle-content">
 
-        <div class="names">
+        <div class="names ">
           Afif
-          <span class="ampersand">&amp;</span>
+          <span class="ampersand ">&amp;</span>
           Athirah
         </div>
 
-        <div class="divider"><span>✦</span></div>
+        <div class="divider "><span>✦</span></div>
 
         <div style="margin-bottom:1rem;">
-          <div class="detail-row">
+          <div class="detail-row ">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             <span class="detail-label">Ahad, 1 November 2026</span>
           </div>
-          <div class="detail-row">
+          <div class="detail-row ">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <span>11.00 pagi &nbsp;·&nbsp; Majlis Perkahwinan</span>
           </div>
-          <div class="detail-row">
+          <div class="detail-row ">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Dewan Komuniti Lembah Pantai</span>
           </div>
         </div>
       </div>
 
-      <!-- <div class="divider"><span>✦</span></div>
-
-      <p class="countdown-heading">Hari bahagia menghampiri</p>
-      <div class="countdown-wrap">
-        <div class="countdown-box">
-          <span class="countdown-num" id="cd-days">--</span>
-          <span class="countdown-label">Hari</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="countdown-num" id="cd-hours">--</span>
-          <span class="countdown-label">Jam</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="countdown-num" id="cd-mins">--</span>
-          <span class="countdown-label">Minit</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="countdown-num" id="cd-secs">--</span>
-          <span class="countdown-label">Saat</span>
-        </div>
-      </div> -->
-
-      <p class="footer-note">Kehadiran anda amat kami hargai</p>
+      <p class="footer-note ">Kehadiran anda amat kami hargai</p>
     </div>
 
     <div class="scroll-hint">
@@ -308,16 +289,16 @@
   
   <!-- PAGE 2 — MENJEMPUT -->
 
-<section class="section section-alt" id="sec-1">
+<section class="section section-alt " id="sec-1">
 
-  <div class="card">
+  <div class="card reveal">
 
     <div class="corner-tl"></div>
     <div class="corner-tr"></div>
     <div class="corner-bl"></div>
     <div class="corner-br"></div>
 
-    <p class="eyebrow">
+    <p class="eyebrow ">
       Menjemput ke majlis yang diberkati
     </p>
 
@@ -380,7 +361,7 @@
 
   <!-- PAGE 2 — ATURCARA -->
   <section class="section " id="sec-2">
-    <div class="card">
+    <div class="card reveal">
       <div class="corner-tl"></div><div class="corner-tr"></div>
       <div class="corner-bl"></div><div class="corner-br"></div>
 
@@ -425,7 +406,7 @@
 
   <!-- PAGE 3 — RSVP + LOCATION -->
   <section class="section section-alt" id="sec-3">
-    <div class="card">
+    <div class="card reveal">
       <div class="corner-tl"></div><div class="corner-tr"></div>
       <div class="corner-bl"></div><div class="corner-br"></div>
 
@@ -442,24 +423,8 @@
 			Dewan Komuniti Lembah Pantai
 		  </span>
 		</div>
-
-
-		<!-- LOCATION BUTTON
-		<a class="btn btn-outline btn-full"
-		href="https://maps.app.goo.gl/wx2eG25VmbfR9URB8"
-		target="_blank"
-		rel="noopener">
-
-		  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-			<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
-			<circle cx="12" cy="10" r="3"/>
-		  </svg>
-
-		  Buka Lokasi
-
-		</a> -->
+    
   <div class="btn-row">
-
     <!-- Google Maps -->
     <a class="btn btn-outline"
       href="https://maps.app.goo.gl/wx2eG25VmbfR9URB8"
@@ -474,12 +439,10 @@
       href="https://www.waze.com/ul?q=Dewan%20Komuniti%20Lembah%20Pantai"
       target="_blank">
      <i class="fa-brands fa-waze"></i>
-
-
       Waze
     </a>
 
-</div>
+  </div>
 
 		<div class="divider">
 		  <span>✦</span>
@@ -492,7 +455,7 @@
 		  <input 
 			type="text"
 			id="guest-name"
-			placeholder="Nama Tetamu"
+			placeholder="Nama tetamu"
 			required>
 
 
@@ -527,17 +490,6 @@
       var target = new Date('2026-11-01T11:00:00');
       var now = new Date();
       var diff = target - now;
-      if (diff <= 0) {
-        document.getElementById('cd-days').textContent  = '0';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent  = '00';
-        document.getElementById('cd-secs').textContent  = '00';
-        return;
-      }
-      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
-      document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
-      document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
-      document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
     }
     // tick();
     // setInterval(tick, 1000);
@@ -597,6 +549,29 @@
 		});
 	});
 	
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } 
+      else {
+        entry.target.classList.remove('show');
+      }
+
+    });
+
+  }, {
+    threshold: 0.2
+  });
+
+
+  reveals.forEach(el => {
+    revealObserver.observe(el);
+  });
+
+
   </script>
 </body>
 </html>
