@@ -198,6 +198,10 @@
       margin-top:10px;
 
     }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
 	
     .couples-names {
         font-family: 'Cormorant Garamond', serif;
@@ -474,7 +478,7 @@
 			<option value="6">6 Tetamu</option>
 		  </select>
 
-		  <button class="btn btn-fill" type="submit">
+		  <button class="btn btn-fill" type="submit" id="rsvp-btn">
 			RSVP
 		  </button>
 
@@ -504,6 +508,29 @@
         setInterval(tick,1000);
     } 
 
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } 
+      else {
+        entry.target.classList.remove('show');
+      }
+
+    });
+
+  }, {
+    threshold: 0.2
+  });
+
+
+  reveals.forEach(el => {
+    revealObserver.observe(el);
+  });
+
+
     // NAV DOTS
     var sections = [
       'sec-0',
@@ -525,56 +552,40 @@
     sections.forEach(function(id) { observer.observe(document.getElementById(id)); });
 	
 	// RSVP SHEET
-	const scriptURL =
-	"https://script.google.com/macros/s/AKfycbyoH2znNby0kq2VI3g7MH6W7XLVZQM6SfJQfP4vqlcqLwVlw7dKS1wrsX12gDo_Yufy/exec"
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbyoH2znNby0kq2VI3g7MH6W7XLVZQM6SfJQfP4vqlcqLwVlw7dKS1wrsX12gDo_Yufy/exec";
 
+  const form = document.getElementById("rsvp-form");
+  const btn = document.getElementById("rsvp-btn");
 
-	document
-	.getElementById("rsvp-form")
-	.addEventListener("submit", e => {
-		e.preventDefault();
-		let data = {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-			name:
-			document.getElementById("guest-name").value,
-			attendance:
-			document.getElementById("guest-count").value
+    btn.disabled = true;
+    btn.textContent = "Menghantar...";
 
-		};
-		fetch(scriptURL, {
-			method:"POST",
-			body:JSON.stringify(data)
-		})
+    const data = {
+      name: document.getElementById("guest-name").value,
+      attendance: document.getElementById("guest-count").value
+    };
 
-		.then(response => response.json())
-		.then(result => {
-			alert("RSVP berjaya direkodkan");
-			document
-			.getElementById("rsvp-form")
-			.reset();
-		});
-	});
-	
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      } 
-      else {
-        entry.target.classList.remove('show');
-      }
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
 
-    });
+      const result = await response.json();
 
-  }, {
-    threshold: 0.2
-  });
-
-
-  reveals.forEach(el => {
-    revealObserver.observe(el);
+      alert("RSVP berjaya direkodkan");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      alert("Maaf, RSVP gagal dihantar. Sila cuba lagi.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "RSVP";
+    }
   });
 
 
