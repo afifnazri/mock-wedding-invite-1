@@ -199,10 +199,11 @@
 
     }
     .btn:disabled {
-      opacity: 0.6;
+      opacity: 0.65;
       cursor: not-allowed;
     }
-	
+
+    
     .couples-names {
         font-family: 'Cormorant Garamond', serif;
         font-size: 34px;
@@ -470,17 +471,20 @@
 
 
 		  <select id="guest-count">
-			<option value="1">1 Tetamu</option>
-			<option value="2">2 Tetamu</option>
-			<option value="3">3 Tetamu</option>
-			<option value="4">4 Tetamu</option>
-			<option value="5">5 Tetamu</option>
-			<option value="6">6 Tetamu</option>
-		  </select>
+        <option value="1">1 Tetamu</option>
+        <option value="2">2 Tetamu</option>
+        <option value="3">3 Tetamu</option>
+        <option value="4">4 Tetamu</option>
+        <option value="5">5 Tetamu</option>
+        <option value="6">6 Tetamu</option>
+        </select>
 
 		  <button class="btn btn-fill" type="submit" id="rsvp-btn">
-			RSVP
+			  RSVP
 		  </button>
+
+      <!-- <p id="rsvp-message"></p> -->
+
 
 		</form>
 
@@ -577,17 +581,25 @@
 
       const result = await response.json();
 
-      alert("RSVP berjaya direkodkan");
       form.reset();
+      btn.textContent = "Berjaya dihantar ✓";
+
+      setTimeout(() => {
+        btn.textContent = "RSVP";
+        btn.disabled = false;
+      }, 2200);
+
     } catch (error) {
       console.error(error);
-      alert("Maaf, RSVP gagal dihantar. Sila cuba lagi.");
-    } finally {
-      btn.disabled = false;
-      btn.textContent = "RSVP";
+
+      btn.textContent = "Gagal dihantar";
+
+      setTimeout(() => {
+        btn.textContent = "RSVP";
+        btn.disabled = false;
+      }, 2200);
     }
   });
-
 
   </script>
 </body>
