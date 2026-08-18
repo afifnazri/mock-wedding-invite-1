@@ -475,12 +475,10 @@
         <option value="2">2 Tetamu</option>
         <option value="3">3 Tetamu</option>
         <option value="4">4 Tetamu</option>
-        <option value="5">5 Tetamu</option>
-        <option value="6">6 Tetamu</option>
         </select>
 
 		  <button class="btn btn-fill" type="submit" id="rsvp-btn">
-			  RSVP
+			  TEKAN UNTUK RSVP
 		  </button>
 
       <!-- <p id="rsvp-message"></p> -->
@@ -498,7 +496,77 @@
     </div>
   </section>
 
+
+  
+  <!-- SITE FOOTER -->
+  <footer style="
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: #b0a090;
+    background: #ffffff;
+  ">
+    &copy; 2026 Afif Nazri. All Rights Reserved.
+  </footer>
+
+  <!-- YOUTUBE FLOATING PLAYER -->
+  <div id="music-toggle" style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 200;
+    background: #8B6F47;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  " onclick="toggleMusicPlayer()">
+    <i class="fa-solid fa-music"></i>
+  </div>
+
+  <div id="music-player" style="
+    position: fixed;
+    bottom: 74px;
+    left: 20px;
+    z-index: 200;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+  ">
+    <iframe
+      id="yt-iframe"
+      data-src="https://www.youtube-nocookie.com/embed/CusntE5Q46s?autoplay=1&origin=https://afifnazri.github.io/mock-wedding-invite-1/"
+      width="280"
+      height="158"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      loading="lazy">
+    </iframe>
+
+  </div>
+
   <script>
+    // MUSIC PLAYER
+     function toggleMusicPlayer() {
+      const player = document.getElementById('music-player');
+      const iframe = document.getElementById('yt-iframe');
+      if (player.style.display === 'none') {
+        if (!iframe.src) iframe.src = iframe.dataset.src;
+        player.style.display = 'block';
+      } else {
+        player.style.display = 'none';
+      }
+    }
+
+    
     // COUNTDOWN
     function tick() {
       var target = new Date('2026-11-01T11:00:00');
@@ -557,7 +625,7 @@
 	
 	// RSVP SHEET
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbyoH2znNby0kq2VI3g7MH6W7XLVZQM6SfJQfP4vqlcqLwVlw7dKS1wrsX12gDo_Yufy/exec";
+    "https://script.google.com/macros/s/AKfycbzSPKZfUKQkaDvcHrmafMNPBtwAmsejO2hIjyR2XYWnITHG6IKSTWIEqqFobqySklg3/exec";
 
   const form = document.getElementById("rsvp-form");
   const btn = document.getElementById("rsvp-btn");
@@ -582,10 +650,10 @@
       const result = await response.json();
 
       form.reset();
-      btn.textContent = "Berjaya dihantar ✓";
+      btn.textContent = "Berjaya dihantar";
 
       setTimeout(() => {
-        btn.textContent = "RSVP";
+        btn.textContent = "TEKAN UNTUK RSVP";
         btn.disabled = false;
       }, 2200);
 
