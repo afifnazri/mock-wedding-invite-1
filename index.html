@@ -511,62 +511,47 @@
     &copy; 2026 Afif Nazri. All Rights Reserved.
   </footer>
 
-  <!-- YOUTUBE FLOATING PLAYER -->
-  <div id="music-toggle" style="
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 200;
-    background: #8B6F47;
-    color: #fff;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  " onclick="toggleMusicPlayer()">
-    <i class="fa-solid fa-music"></i>
-  </div>
+    <!-- MUSIC PLAYER (self-hosted) -->
+    <div id="music-toggle" style="
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 200;
+      background: #8B6F47;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    " onclick="toggleMusicPlayer()">
+      <i class="fa-solid fa-music"></i>
+    </div>
 
-  <div id="music-player" style="
-    position: fixed;
-    bottom: 74px;
-    left: 20px;
-    z-index: 200;
-    display: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    border-radius: 12px;
-    overflow: hidden;
-  ">
-    <iframe
-      id="yt-iframe"
-      data-src="https://www.youtube-nocookie.com/embed/CusntE5Q46s?autoplay=1&origin=https://afifnazri.github.io/mock-wedding-invite-1/"
-      width="280"
-      height="158"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      loading="lazy">
-    </iframe>
+    <audio id="bg-audio" loop>
+      <source src="assets/audio/track1.mp3" type="audio/mpeg">
+    </audio>
 
-  </div>
 
   <script>
-    // MUSIC PLAYER
-     function toggleMusicPlayer() {
-      const player = document.getElementById('music-player');
-      const iframe = document.getElementById('yt-iframe');
-      if (player.style.display === 'none') {
-        if (!iframe.src) iframe.src = iframe.dataset.src;
-        player.style.display = 'block';
+    function toggleMusicPlayer() {
+      const audio = document.getElementById('bg-audio');
+      const icon = document.querySelector('#music-toggle i');
+      if (audio.paused) {
+        audio.play();
+        icon.classList.remove('fa-music');
+        icon.classList.add('fa-pause');
       } else {
-        player.style.display = 'none';
+        audio.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-music');
       }
     }
 
-    
+
     // COUNTDOWN
     function tick() {
       var target = new Date('2026-11-01T11:00:00');
