@@ -264,10 +264,15 @@
     <div style="
       position: relative;
       width: 100%;
-      max-width: 360px;
+      max-width: 440px;
+      height: 620px;
       padding: 3rem 2rem;
       border: 1px solid rgba(255,255,255,0.35);
       border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     ">
       <!-- corner accents -->
       <div style="position:absolute; top:12px; left:12px; width:28px; height:28px; border-top:1px solid rgba(255,255,255,0.6); border-left:1px solid rgba(255,255,255,0.6); border-radius:4px 0 0 0;"></div>
@@ -289,7 +294,7 @@
         Athirah
       </div>
 
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom:1.8rem;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:1.8rem; width:100%;">
         <span style="flex:1; height:1px; background:rgba(255,255,255,0.35);"></span>
         <span style="font-size:13px; opacity:0.7;">✦</span>
         <span style="flex:1; height:1px; background:rgba(255,255,255,0.35);"></span>
@@ -449,7 +454,7 @@
 
   
 
-  <!-- PAGE 2 — ATURCARA -->
+  <!-- PAGE 3 — ATURCARA -->
   <section class="section " id="sec-2">
     <div class="card reveal">
       <div class="corner-tl"></div><div class="corner-tr"></div>
@@ -654,19 +659,6 @@
         icon.classList.add('fa-music');
       }
     });
-
-    // COUNTDOWN
-    function tick() {
-      var target = new Date('2026-11-01T11:00:00');
-      var now = new Date();
-      var diff = target - now;
-    }
-    // tick();
-    // setInterval(tick, 1000);
-    if(document.getElementById('cd-days')){
-        tick();
-        setInterval(tick,1000);
-    } 
 
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
