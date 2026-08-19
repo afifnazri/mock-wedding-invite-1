@@ -232,6 +232,14 @@
     transform: translateY(0);
   }
 	
+
+  @keyframes doorPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.25); }
+    50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  }
+
+
+
   </style>
 </head>
 
@@ -308,18 +316,13 @@
     </div>
   </div>
 
-  <style>
-    @keyframes doorPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.25); }
-      50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(255,255,255,0); }
-    }
-  </style>
+
   <!-- NAV DOTS -->
   <nav class="nav-dots">
     <button class="nav-dot active" onclick="goTo(0)"></button>
     <button class="nav-dot" onclick="goTo(1)"></button>
     <button class="nav-dot" onclick="goTo(2)"></button>
-	<button class="nav-dot" onclick="goTo(3)"></button>
+  	<button class="nav-dot" onclick="goTo(3)"></button>
 
   </nav>
 
@@ -642,6 +645,15 @@
       }
     }
 
+    document.addEventListener('visibilitychange', () => {
+      const audio = document.getElementById('bg-audio');
+      const icon = document.querySelector('#music-toggle i');
+      if (document.hidden) {
+        audio.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-music');
+      }
+    });
 
     // COUNTDOWN
     function tick() {
