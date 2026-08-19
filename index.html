@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Majlis Perkahwinan Afif & Athirah</title>
+  <title>Walimatul Urus Afif & Athirah | Ahad 1/11/2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
@@ -32,7 +32,8 @@
 
       width: 100%; 
       max-width: 440px;
-      height: 620px;
+      /* height: 620px; */
+      height: 540px;
 
       background: #ffffff; 
       border: 1px solid #e8e0d4;
@@ -139,7 +140,11 @@
     .timeline-event { font-size: 14px; font-weight: 400; color: #2c2418; }
 
     .nav-dots {
-      position: fixed; right: 14px; top: 50%; transform: translateY(-50%);
+      position: fixed; 
+      /* right: 14px;  */
+      right: 6px; 
+      top: 50%; 
+      transform: translateY(-50%);
       display: flex; flex-direction: column; gap: 8px; z-index: 100;
     }
     .nav-dot {
@@ -178,9 +183,9 @@
     @media (max-width: 480px) {
       .card { padding: 2.5rem 1.5rem; }
       .names { font-size: 36px; }
-      .countdown-num { font-size: 28px; }
-      .countdown-box { min-width: 44px; }
-      .nav-dots { display: none; }
+      /* .countdown-num { font-size: 28px; } */
+      /* .countdown-box { min-width: 44px; } */
+      /* .nav-dots { display: none; } */
     }
 	
     #rsvp-form input,
@@ -265,7 +270,7 @@
       position: relative;
       width: 100%;
       max-width: 440px;
-      height: 620px;
+      height: 540px;
       padding: 3rem 2rem;
       border: 1px solid rgba(255,255,255,0.35);
       border-radius: 12px;
@@ -287,7 +292,7 @@
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:300; font-size:38px; line-height:1.2; margin-bottom:0.3rem;">
         Afif
       </div>
-      <div style="font-family:'Cormorant Garamond', serif; font-size:26px; opacity:0.75; margin:0.2rem 0;">
+      <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:26px; opacity:0.75; margin:0.2rem 0;">
         &amp;
       </div>
       <div style="font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:300; font-size:38px; line-height:1.2; margin-bottom:1.8rem;">
@@ -331,7 +336,7 @@
 
   </nav>
 
-  <!-- PAGE 1 — INVITATION + COUNTDOWN -->
+  <!-- PAGE 1 — INVITATION  -->
   <section class="section" id="sec-0">
     <div class="card reveal">
       <div class="corner-tl"></div><div class="corner-tr"></div>
@@ -390,44 +395,63 @@
     <div class="corner-bl"></div>
     <div class="corner-br"></div>
 
-    <p class="eyebrow ">
+    <p class="eyebrow" style="font-size:10px;">
       Menjemput ke majlis yang diberkati
     </p>
 
-    <div class="names" style="font-size:24px;">
+    <div class="names" style="font-size:18px;margin: 0.2rem 0;">
       Nazri bin Mohd Noor
-      <span class="ampersand">&amp;</span>
+    </div>
+
+    <span class="ampersand" style="
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size:18px;
+    ">
+      &amp;
+    </span>
+        
+    <div class="names" style="font-size:18px; margin: 0.2rem 0;">
       Jariyah binti Jahuri (Jue)
     </div>
+
 
     <div class="divider">
       <span>✦</span>
     </div>
 
-    <p style="
-      font-size:14px;
-      line-height:1.8;
-      color:#6b5d4f;
-      font-weight:300;
-    ">
-
+    <p style="font-size:13px; line-height:1.8;color:#6b5d4f; font-weight:300;">
       Dengan penuh kesyukuran, kami mempersilakan
-      <br><br>
+    </p>
+    <p style="font-size:13px; line-height:1.8; color:#6b5d4f; font-weight:300; margin: 0.8rem 0;">
       <span class="detail-label">
       Dato' &nbsp;|&nbsp; Datin &nbsp;|&nbsp; Tuan &nbsp;|&nbsp;
       Puan &nbsp;|&nbsp; Encik &nbsp;|&nbsp; Cik
       </span>
-      <br><br>
-      seisi keluarga hadir ke majlis perkahwinan anakanda kami
+    </p>
+
+    <p style="font-size:13px; line-height:1.8; color:#6b5d4f; font-weight:300;">
+      hadir ke majlis perkahwinan anakanda kami
     </p>
 
     <div class="divider">
       <span>✦</span>
     </div>
 
-    <div class="couples-names" style="font-size:20px;">
+    <div class="couples-names" style="font-size:18px;margin: 0.2rem 0;">
       Muhammad Afif Akmal bin Nazri
-      <span class="ampersand">&amp;</span>
+    </div>
+    <span class="ampersand" style="
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: normal;
+    ">
+      &amp;
+    </span>
+
+    <div class="couples-names" style="font-size:18px;margin: 0.2rem 0;">
       Nur Athirah binti Muhamad Azmir
     </div>
 
@@ -621,6 +645,12 @@
 
 
   <script>
+
+    // ADD THIS FIRST
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
 
     function openInvitation() {
       const audio = document.getElementById('bg-audio');
